@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "tax": 2,
+        "shipping": 7.2,
+        "discount": 1.2,
+        "billingAddress": {
+            "fullName": "John Doe",
+            "address1": "1605 Liberty Avenue",
+            "country": "US",
+            "state": "CA",
+            "city": "Anaheim",
+            "zip": "92805"
+        },
+        "shippingAddress": {
+            "fullName": "John Doe",
+            "address1": "1605 Liberty Avenue",
+            "country": "US",
+            "state": "CA",
+            "city": "Anaheim",
+            "zip": "92805"
+        },
+        "items": [
+            {
+                "name": "Unisex Premium T-Shirt",
+                "quanity": 1,
+                "price": 13.32,
+                "size": "XL",
+                "color": "Black",
+                "brand": "Bella + Canvas"
+            },
+            {
+                "name": "Unisex Heavy Blend Hoodie",
+                "quanity": 1,
+                "price": 21.62,
+                "size": "M",
+                "color": "White",
+                "brand": "Gildan"
+            }
+        ]
+    }
+]
