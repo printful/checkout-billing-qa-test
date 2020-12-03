@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-center text-3xl text-bold pb-8 text-gray-700">Checkout</div>
+        <checkout-steps />
 
         <div v-if="!isLoading">
             <div class="bg-white rounded-md shadow-md p-8 mb-12">
@@ -64,6 +64,7 @@ import { getFormattedAmount } from '@helpers/currency';
 import DeliveryMethodSelector from '@components/order-review/deliveryMethodSelector';
 import AddressForm from '@components/common/addressForm';
 import CountryFlag from 'vue-country-flag';
+import CheckoutSteps from '@components/order-review/checkoutSteps';
 
 export default {
     name: 'OrderReview',
@@ -75,6 +76,7 @@ export default {
         DeliveryMethodSelector,
         AddressForm,
         CountryFlag,
+        CheckoutSteps,
     },
 
     data() {

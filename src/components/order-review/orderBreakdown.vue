@@ -2,24 +2,24 @@
     <div>
         <div v-if="order.total" class="flex justify-between font-medium py-1 pb-2">
             <div>Subtotal</div>
-            <div>{{ getAmount(order.total) }}</div>
+            <div class="font-bold">{{ getAmount(order.total) }}</div>
         </div>
 
         <hr class="pb-2" />
 
-        <div v-if="order.shipping" class="flex justify-between font-medium text-gray-600 py-1">
+        <div v-if="order.shipping" class="flex justify-between font-medium text-gray-700 py-1">
             <div>Shipping</div>
-            <div>{{ getAmount(order.shipping) }}</div>
+            <div class="font-bold">{{ getAmount(order.shipping) }}</div>
         </div>
 
-        <div v-if="order.tax" class="flex justify-between font-medium text-gray-600 py-1">
+        <div v-if="order.tax" class="flex justify-between font-medium text-gray-700 py-1">
             <div>TAX</div>
-            <div>{{ getAmount(order.tax) }}</div>
+            <div class="font-bold">{{ getAmount(order.tax) }}</div>
         </div>
 
         <div v-if="order.discount" class="flex justify-between font-medium text-green-600 py-1 pb-2">
             <div>Discount</div>
-            <div>-{{ getAmount(order.discount) }}</div>
+            <div class="font-bold">-{{ getAmount(order.discount) }}</div>
         </div>
 
         <hr class="pb-2" />
