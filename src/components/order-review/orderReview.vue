@@ -12,7 +12,7 @@
                 <h1 class="text-2xl font-semibold mb-4">Shipping & delivery</h1>
                 <div class="flex flex-col md:flex-row justify-between">
                     <div>
-                        <div class="font-bold">Shipping from</div>
+                        <div class="font-bold mb-2">Shipping from</div>
                         <div class="flex content-center">
                             <div class="mr-1">
                                 <country-flag :country="order.fulfillmentLocation" size="small" class="my-auto" />

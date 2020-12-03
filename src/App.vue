@@ -14,6 +14,7 @@
 
 <style lang="scss">
 @import '@assets/scss/_variables';
+@import '@assets/scss/tooltip';
 
 html {
     background: $gray-50;
