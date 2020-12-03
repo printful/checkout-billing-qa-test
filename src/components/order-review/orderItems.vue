@@ -21,7 +21,7 @@
                     </div>
                 </td>
                 <td class="text-center border-t">{{ item.quantity }}</td>
-                <td class="text-center border-t">{{ getFormattedItemPrice(item.price) }}</td>
+                <td class="text-center border-t font-semibold">{{ getFormattedItemPrice(item.price) }}</td>
             </tr>
         </tbody>
     </table>

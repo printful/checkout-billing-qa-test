@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
+    pages: {
+        index: {
+            entry: 'src/main.js',
+            title: 'Billing QA Test',
+        },
+    },
     configureWebpack: {
         resolve: {
             alias: {

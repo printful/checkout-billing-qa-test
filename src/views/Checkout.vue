@@ -1,11 +1,10 @@
 <template>
     <div>
-        <order-review v-if="order" :order="order" />
+        <order-review />
     </div>
 </template>
 
 <script>
-import { getOrderById } from '@services/orderReviewService';
 import OrderReview from '@components/order-review/orderReview';
 
 export default {
@@ -13,22 +12,6 @@ export default {
 
     components: {
         OrderReview,
-    },
-
-    data() {
-        return {
-            order: null,
-        };
-    },
-
-    mounted() {
-        this.loadOrder();
-    },
-
-    methods: {
-        loadOrder() {
-            this.order = getOrderById(1);
-        },
     },
 };
 </script>

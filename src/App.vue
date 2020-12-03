@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="container mx-auto px-2 md:px-64">
+    <div id="app" class="container mx-auto px-2 lg:px-32 xl:px-64">
         <div id="nav">
             <router-link to="/">Checkout</router-link>
         </div>

@@ -28,6 +28,9 @@ export default class Order {
     discount = 0;
 
     /** @type {number} */
+    total = 0;
+
+    /** @type {number} */
     grandTotal = 0;
 
     /** @type {string} */
@@ -39,7 +42,6 @@ export default class Order {
         this.shippingAddress = params.shippingAddress ? new Address(params.shippingAddress) : null;
         this.tax = params.tax ?? 0;
         this.vat = params.vat ?? 0;
-        this.shipping = params.shipping ?? 0;
         this.discount = params.discount ?? 0;
         this.currency = params.currency ?? CURRENCY_USD;
 
@@ -47,20 +49,31 @@ export default class Order {
             params.items.forEach(item => this.items.push(new OrderItem(item)));
         }
 
+        this.total = this.calculateItemTotal();
         this.grandTotal = this.calculateGrandTotal();
     }
 
     /**
-     * Returns caculated grand total
      * @return {number}
      */
     calculateGrandTotal() {
+        return parseFloat(this.tax + this.vat + this.shipping + this.calculateItemTotal() - this.discount).toFixed(2);
+    }
+
+    /**
+     * @return {number}
+     */
+    calculateItemTotal() {
         let itemTotal = 0;
 
         this.items.forEach(item => {
             itemTotal += item.price * item.quantity;
         });
 
-        return this.tax + this.vat + this.shipping + itemTotal - this.discount;
+        return itemTotal;
+    }
+
+    recalculateTotals() {
+        this.grandTotal = this.calculateGrandTotal();
     }
 }
