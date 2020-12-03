@@ -8,6 +8,9 @@ Vue.use(VTooltip);
 
 Vue.config.productionTip = false;
 
+// Ignore <ion-icon/> tags
+Vue.config.ignoredElements = [/^ion-/];
+
 new Vue({
     router,
     render: h => h(App),
