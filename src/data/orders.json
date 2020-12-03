@@ -4,14 +4,7 @@
         "tax": 2,
         "shipping": 7.2,
         "discount": 1.2,
-        "billingAddress": {
-            "fullName": "John Doe",
-            "address1": "1605 Liberty Avenue",
-            "country": "US",
-            "state": "CA",
-            "city": "Anaheim",
-            "zip": "92805"
-        },
+        "fulfillmentLocation": "LV",
         "shippingAddress": {
             "fullName": "John Doe",
             "address1": "1605 Liberty Avenue",

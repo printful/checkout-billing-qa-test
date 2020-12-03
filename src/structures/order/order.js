@@ -36,6 +36,9 @@ export default class Order {
     /** @type {string} */
     currency = CURRENCY_USD;
 
+    /** @type {string} */
+    fulfillmentLocation = 'LV';
+
     constructor(params = {}) {
         this.id = params.id ?? null;
         this.billingAddress = params.billingAddress ? new Address(params.billingAddress) : null;
@@ -44,6 +47,7 @@ export default class Order {
         this.vat = params.vat ?? 0;
         this.discount = params.discount ?? 0;
         this.currency = params.currency ?? CURRENCY_USD;
+        this.fulfillmentLocation = params.fulfillmentLocation ?? '';
 
         if (params.items) {
             params.items.forEach(item => this.items.push(new OrderItem(item)));

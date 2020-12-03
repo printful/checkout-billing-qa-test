@@ -13,7 +13,14 @@
                 <div class="flex flex-col md:flex-row justify-between">
                     <div>
                         <div class="font-bold">Shipping from</div>
-                        <p>Latvia</p>
+                        <div class="flex content-center">
+                            <div class="mr-1">
+                                <country-flag :country="order.fulfillmentLocation" size="small" class="my-auto" />
+                            </div>
+                            <div>
+                                <span>{{ order.fulfillmentLocation }}</span>
+                            </div>
+                        </div>
                     </div>
                     <address-block :address="order.shippingAddress" :title="'Shipping to'" class="pt-6 md:pt-0" />
                     <delivery-method-selector
@@ -25,12 +32,20 @@
             </div>
 
             <div class="bg-white rounded-md shadow-md p-8 mb-12">
+                <h1 class="text-2xl font-semibold mb-4">Payment</h1>
+                <h1 class="text-lg font-semibold mb-4">Billing address</h1>
+
+                <address-form @on-address-change="order.billingAddress = $event" />
+            </div>
+
+            <div class="bg-white rounded-md shadow-md p-8 mb-12">
                 <div class="md:w-1/3 mx-auto">
                     <h1 class="text-2xl font-semibold mb-4">Order summary</h1>
                     <order-breakdown :order="order" />
                     <button
                         type="button"
                         class="border bg-indigo-700 text-white rounded-md px-4 py-2 mt-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline w-full"
+                        @click="onPayNowClick"
                     >
                         Pay now
                     </button>
@@ -47,6 +62,8 @@ import OrderItems from '@components/order-review/orderItems';
 import OrderBreakdown from '@components/order-review/orderBreakdown';
 import { getFormattedAmount } from '@helpers/currency';
 import DeliveryMethodSelector from '@components/order-review/deliveryMethodSelector';
+import AddressForm from '@components/common/addressForm';
+import CountryFlag from 'vue-country-flag';
 
 export default {
     name: 'OrderReview',
@@ -56,6 +73,8 @@ export default {
         OrderItems,
         OrderBreakdown,
         DeliveryMethodSelector,
+        AddressForm,
+        CountryFlag,
     },
 
     data() {
@@ -90,6 +109,10 @@ export default {
         onDeliveryMethodChange(selectedDeliveryMethod) {
             this.order.shipping = selectedDeliveryMethod.price;
             this.order.recalculateTotals();
+        },
+
+        onPayNowClick() {
+            alert('Nope. Nothing there');
         },
     },
 };
