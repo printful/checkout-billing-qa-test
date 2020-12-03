@@ -1,10 +1,14 @@
 <template>
-    <div id="app" class="container mx-auto px-2 lg:px-32 xl:px-64">
-        <div id="nav">
-            <router-link to="/">Checkout</router-link>
+    <div id="app">
+        <div id="nav" class="bg-white shadow-sm p-4">
+            <router-link
+                to="/"
+                class="border border-indigo-500 text-indigo-500 rounded-md px-4 py-2 transition duration-500 ease select-none hover:text-white hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
+                >Checkout</router-link
+            >
         </div>
 
-        <router-view class="pt-4" />
+        <router-view class="container mx-auto px-2 mt-10 lg:px-32 xl:px-64" />
     </div>
 </template>
 

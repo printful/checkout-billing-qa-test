@@ -17,6 +17,9 @@ export default class OrderItem {
     /** @type {string} */
     brand = '';
 
+    /** @type {string} */
+    image = '';
+
     constructor(params = {}) {
         this.name = params.name ?? '';
         this.quantity = params.quantity ?? 1;
@@ -24,5 +27,6 @@ export default class OrderItem {
         this.size = params.size ?? '';
         this.color = params.color ?? '';
         this.brand = params.brand ?? '';
+        this.image = params.image ?? '';
     }
 }

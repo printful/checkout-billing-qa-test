@@ -1,8 +1,8 @@
 <template>
-    <table class="table-auto w-full">
+    <table class="table-auto w-full order-items">
         <thead>
             <tr>
-                <th class="w-1/3 md:w-3/4 font-light text-gray-600 text-left pb-2">PRODUCT</th>
+                <th class="w-2/3 md:w-3/4 font-light text-gray-600 text-left pb-2">PRODUCT</th>
                 <th class="font-light text-gray-600">QTY</th>
                 <th class="font-light text-gray-600">PRICE</th>
             </tr>
@@ -10,7 +10,7 @@
         <tbody>
             <tr v-for="(item, index) in orderItems" :key="index">
                 <td class="flex flex-wrap py-4 border-t">
-                    <img height="150" width="150" src="https://via.placeholder.com/150x150" />
+                    <img class="order-items__image" :src="getProductImagePath(item.image)" />
                     <div class="flex flex-wrap content-center sm:pl-6">
                         <div>
                             <div class="text-lg">{{ item.name }}</div>
@@ -53,6 +53,28 @@ export default {
         getFormattedItemPrice(price) {
             return getCurrencySymbol(this.currency) + price;
         },
+
+        /**
+         * @param {string} imageName
+         * @return {string}
+         */
+        getProductImagePath(imageName) {
+            if (!imageName) {
+                return 'https://via.placeholder.com/150x150';
+            }
+
+            const images = require.context('../../assets/images/products', false, /\.png$/);
+            return images('./' + imageName + '.png');
+        },
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.order-items {
+    &__image {
+        height: 150px;
+        width: 150px;
+    }
+}
+</style>
