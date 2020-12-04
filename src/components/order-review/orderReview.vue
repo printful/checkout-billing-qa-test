@@ -47,7 +47,7 @@
                 <h1 class="text-2xl font-semibold mb-4">Payment</h1>
                 <h1 class="text-lg font-semibold mb-4">Billing address</h1>
 
-                <address-form @on-address-change="order.billingAddress = $event" />
+                <address-form @on-address-change="onBillingAddressUpdate" />
             </div>
 
             <div class="bg-white rounded-md shadow-md px-8 mb-8 lg:mb-12 py-12">
@@ -108,6 +108,7 @@ export default {
         return {
             isLoading: true,
             isTosChecked: false,
+            isBillingAddressValid: false,
             orderId: 1,
             order: null,
             submitError: '',
@@ -141,6 +142,14 @@ export default {
         },
 
         /**
+         * @param {{isAddressValid: boolean, newAddress: Address}} addressData
+         */
+        onBillingAddressUpdate(addressData) {
+            this.isBillingAddressValid = addressData.isAddressValid;
+            this.order.billingAddress = addressData.newAddress;
+        },
+
+        /**
          * @param {number} orderId
          */
         onOrderChange(orderId) {
@@ -170,9 +179,15 @@ export default {
                 return;
             }
 
+            if (!this.isBillingAddressValid) {
+                this.submitError = 'Please fill out your billing address.';
+
+                return;
+            }
+
             this.submitError = '';
 
-            alert('Paid ' + this.grandTotal);
+            alert(`Paid ${this.grandTotal} in total.`);
         },
     },
 };

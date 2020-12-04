@@ -10,6 +10,7 @@
                     :class="{ 'border-red-700': errors.length }"
                     :disabled="isInputDisabled"
                     class="h-10 border rounded-md border-gray-300 hover:shadow p-2 mr-2 w-64"
+                    @keyup.enter="onCodeSubmit()"
                 />
                 <button
                     v-if="!isInputDisabled"
@@ -65,11 +66,7 @@ export default {
     methods: {
         onCodeSubmit() {
             if (!this.discountCode) {
-                this.$refs.discountCodeProvider.applyResult({
-                    errors: ['You must enter a discount code'],
-                    valid: false,
-                    failedRules: {},
-                });
+                this.setError('You must enter a discount code.');
 
                 return;
             }
@@ -87,12 +84,24 @@ export default {
             });
 
             if (!coupon.length) {
+                this.setError('Code is not valid.');
                 return 0;
             }
 
             this.isInputDisabled = true;
 
             return coupon[0].value;
+        },
+
+        /**
+         * @param {string} message
+         */
+        setError(message) {
+            this.$refs.discountCodeProvider.applyResult({
+                errors: [message],
+                valid: false,
+                failedRules: {},
+            });
         },
     },
 };

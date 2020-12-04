@@ -30,8 +30,10 @@ export default {
          * @param {number} orderId
          */
         onOrderSelect(orderId) {
-            this.selectedOrderId = orderId;
-            this.$emit('on-order-selected', orderId);
+            if (orderId !== this.selectedOrderId) {
+                this.selectedOrderId = orderId;
+                this.$emit('on-order-selected', orderId);
+            }
         },
     },
 };
