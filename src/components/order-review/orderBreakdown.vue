@@ -13,7 +13,7 @@
         </div>
 
         <div v-if="order.tax" class="flex justify-between font-medium text-gray-700 py-1">
-            <div>TAX</div>
+            <div>{{ taxDisplayText }}</div>
             <div class="font-bold">{{ getAmount(order.tax) }}</div>
         </div>
 
@@ -42,6 +42,17 @@ export default {
         order: {
             type: Order,
             required: true,
+        },
+    },
+
+    computed: {
+        /**
+         * @return {string}
+         */
+        taxDisplayText() {
+            const percentage = this.order.taxPercentage * 100;
+
+            return `TAX (${percentage}%)`;
         },
     },
 

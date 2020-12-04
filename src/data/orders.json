@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "tax": 2.0,
+        "taxPercentage": 0.21,
         "fulfillmentLocation": {
             "id": "LV",
             "name": "Latvia"
@@ -46,7 +46,7 @@
     },
     {
         "id": 2,
-        "tax": 4.23,
+        "taxPercentage": 0.22,
         "fulfillmentLocation": {
             "id": "LV",
             "name": "Latvia"
