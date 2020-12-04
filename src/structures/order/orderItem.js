@@ -20,6 +20,12 @@ export default class OrderItem {
     /** @type {string} */
     image = '';
 
+    /**
+     * Used for QA tests
+     * @type {boolean}
+     */
+    showIncorrectCurrencySymbol = false;
+
     constructor(params = {}) {
         this.name = params.name ?? '';
         this.quantity = params.quantity ?? 1;
@@ -28,5 +34,6 @@ export default class OrderItem {
         this.color = params.color ?? '';
         this.brand = params.brand ?? '';
         this.image = params.image ?? '';
+        this.showIncorrectCurrencySymbol = params.showIncorrectCurrencySymbol ?? false;
     }
 }

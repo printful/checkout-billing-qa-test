@@ -6,8 +6,8 @@
             <div v-if="address.fullName">{{ address.fullName }}</div>
             <div v-if="address.address1">{{ address.address1 }}</div>
             <div v-if="address.address2">{{ address.address2 }}</div>
-            <div v-if="address.address2">{{ address.address2 }}</div>
             <div v-if="address.city">{{ address.city }}</div>
+            <div v-if="isTestMode && address.city">{{ address.city }}</div>
             <div v-if="address.country">{{ address.country }}</div>
             <div v-if="address.zip">{{ address.zip }}</div>
             <div v-if="address.phone">{{ address.phone }}</div>
@@ -17,6 +17,7 @@
 
 <script>
 import Address from '@structures/address';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'AddressBlock',
@@ -31,6 +32,12 @@ export default {
             required: false,
             default: '',
         },
+    },
+
+    data() {
+        return {
+            isTestMode,
+        };
     },
 };
 </script>

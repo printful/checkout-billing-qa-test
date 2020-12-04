@@ -31,7 +31,8 @@
                 "size": "M",
                 "color": "White",
                 "brand": "Gildan",
-                "image": "g18500_white"
+                "image": "g18500_white",
+                "showIncorrectCurrencySymbol": true
             },
             {
                 "name": "Unisex Premium Tank Top",
@@ -67,7 +68,8 @@
                 "size": "XL",
                 "color": "Black",
                 "brand": "Bella + Canvas",
-                "image": "bc3001_black"
+                "image": "bc3001_black",
+                "showIncorrectCurrencySymbol": true
             },
             {
                 "name": "Unisex Premium Tank Top",

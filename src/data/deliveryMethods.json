@@ -12,7 +12,8 @@
     {
         "id": "premium",
         "name": "Premium",
-        "price": 8.3
+        "price": 8.3,
+        "showIncorrectPrice": true
     },
     {
         "id": "express",

@@ -16,7 +16,7 @@
                     class="form-radio h-5 w-5 text-gray-600"
                 />
                 <span class="ml-2 text-gray-700">
-                    {{ deliveryMethod.name }} ({{ '+' + getAmount(deliveryMethod.price) }})
+                    {{ deliveryMethod.name }} ({{ '+' + getMethodPrice(deliveryMethod) }})
                 </span>
             </label>
         </div>
@@ -27,6 +27,7 @@
 import Order from '@structures/order/order';
 import { getDeliveryOptions } from '@services/orderReviewService';
 import { getFormattedAmount } from '@helpers/currency';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'DeliveryMethodSelector',
@@ -71,6 +72,20 @@ export default {
     },
 
     methods: {
+        /**
+         * @param {DeliveryMethod} deliveryMethod
+         * @return {string}
+         */
+        getMethodPrice(deliveryMethod) {
+            let price = deliveryMethod.price;
+
+            if (isTestMode && deliveryMethod.showIncorrectPrice) {
+                price += 0.2;
+            }
+
+            return this.getAmount(price);
+        },
+
         /**
          * @param {number} amount
          * @return {string}

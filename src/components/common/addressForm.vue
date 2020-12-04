@@ -4,7 +4,7 @@
             <div class="lg:pr-8 flex flex-col space-y-4">
                 <ValidationProvider v-slot="{ errors }" rules="required" name="full name">
                     <div class="flex flex-col items-stretch space-y-1">
-                        <label for="fullName">Full name*</label>
+                        <label for="fullName">Full name<span v-if="!isTestMode">*</span></label>
                         <input
                             type="text"
                             name="fullName"
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="lg:pr-8 flex flex-col space-y-4">
+            <div class="lg:pr-8 flex" :class="secondColumnClass">
                 <div class="grid grid-cols-2 gap-x-4">
                     <ValidationProvider v-slot="{ errors }" rules="required">
                         <div class="flex flex-col space-y-1">
@@ -117,6 +117,7 @@
 <script>
 import Address from '@structures/address';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'AddressForm',
@@ -130,7 +131,17 @@ export default {
         return {
             address: new Address(),
             isAddressValid: false,
+            isTestMode,
         };
+    },
+
+    computed: {
+        /**
+         * @return {string}
+         */
+        secondColumnClass() {
+            return isTestMode ? 'flex-row lg:flex-col space-y-6' : 'flex-col space-y-4';
+        },
     },
 
     watch: {

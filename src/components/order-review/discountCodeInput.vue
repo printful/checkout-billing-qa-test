@@ -15,7 +15,8 @@
                 <button
                     v-if="!isInputDisabled"
                     type="button"
-                    class="border border-indigo-500 text-indigo-500 text-md rounded-md px-4 transition duration-500 ease hover:bg-indigo-700 hover:text-white focus:outline focus:shadow-outline w-full lg:w-auto"
+                    class="border border-indigo-500 text-indigo-500 text-md rounded-md px-4 transition duration-500 ease hover:bg-indigo-700 hover:text-white focus:outline focus:shadow-outline"
+                    :class="submitButtonClass"
                     @click="onCodeSubmit()"
                 >
                     Apply
@@ -29,9 +30,14 @@
 <script>
 import { ValidationProvider } from 'vee-validate';
 import { getCoupons } from '@services/orderReviewService';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'DiscountCodeInput',
+
+    components: {
+        ValidationProvider,
+    },
 
     props: {
         orderId: {
@@ -48,8 +54,13 @@ export default {
         };
     },
 
-    components: {
-        ValidationProvider,
+    computed: {
+        /**
+         * @return {string}
+         */
+        submitButtonClass() {
+            return isTestMode ? 'w-2 lg:w-auto' : 'w-full lg:w-auto';
+        },
     },
 
     watch: {
@@ -85,6 +96,13 @@ export default {
 
             if (!coupon.length) {
                 this.setError('Code is not valid.');
+
+                return 0;
+            }
+
+            if (isTestMode && coupon[0].isInvalidInTestMode) {
+                this.setError('Code is not valid.');
+
                 return 0;
             }
 
