@@ -32,6 +32,13 @@ import { getCoupons } from '@services/orderReviewService';
 export default {
     name: 'DiscountCodeInput',
 
+    props: {
+        orderId: {
+            type: Number,
+            required: true,
+        },
+    },
+
     data() {
         return {
             isInputDisabled: false,
@@ -42,6 +49,13 @@ export default {
 
     components: {
         ValidationProvider,
+    },
+
+    watch: {
+        orderId() {
+            this.discountCode = '';
+            this.isInputDisabled = false;
+        },
     },
 
     mounted() {

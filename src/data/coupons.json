@@ -1,6 +1,10 @@
 [
     {
-        "code": "TESTCODE",
+        "code": "TESTCODE5",
         "value": 5.0
+    },
+    {
+        "code": "TESTCODE10",
+        "value": 10.0
     }
 ]

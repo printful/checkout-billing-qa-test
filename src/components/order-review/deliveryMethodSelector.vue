@@ -58,6 +58,11 @@ export default {
                 this.onDeliveryMethodChange(selectedMethod[0]);
             }
         },
+
+        'order.id'() {
+            this.selectedMethod = null;
+            this.setInitialSelectedMethod();
+        },
     },
 
     mounted() {

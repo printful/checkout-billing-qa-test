@@ -1,6 +1,6 @@
 <template>
     <div class="my-4">
-        <div class="max-w-xl mx-auto my-4 pb-4">
+        <div class="max-w-xl mx-auto">
             <div class="flex pb-3">
                 <div class="flex-1">
                     <div class="w-10 h-10 rounded-full bg-indigo-500 border-2 mx-auto flex items-center">

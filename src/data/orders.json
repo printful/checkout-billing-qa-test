@@ -2,8 +2,6 @@
     {
         "id": 1,
         "tax": 2.0,
-        "shipping": 7.2,
-        "discount": 4.3,
         "fulfillmentLocation": {
             "id": "LV",
             "name": "Latvia"
@@ -34,6 +32,42 @@
                 "color": "White",
                 "brand": "Gildan",
                 "image": "g18500_white"
+            },
+            {
+                "name": "Unisex Premium Tank Top",
+                "quantity": 2,
+                "price": 15.3,
+                "size": "S",
+                "color": "White",
+                "brand": "Bella + Canvas",
+                "image": "bc3480_white"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "tax": 4.23,
+        "fulfillmentLocation": {
+            "id": "LV",
+            "name": "Latvia"
+        },
+        "shippingAddress": {
+            "fullName": "John Doe",
+            "address1": "1605 Liberty Avenue",
+            "country": "US",
+            "state": "CA",
+            "city": "Anaheim",
+            "zip": "92805"
+        },
+        "items": [
+            {
+                "name": "Unisex Premium T-Shirt",
+                "quantity": 3,
+                "price": 13.32,
+                "size": "XL",
+                "color": "Black",
+                "brand": "Bella + Canvas",
+                "image": "bc3001_black"
             },
             {
                 "name": "Unisex Premium Tank Top",
