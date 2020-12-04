@@ -4,7 +4,10 @@
         "tax": 2.0,
         "shipping": 7.2,
         "discount": 4.3,
-        "fulfillmentLocation": "LV",
+        "fulfillmentLocation": {
+            "id": "LV",
+            "name": "Latvia"
+        },
         "shippingAddress": {
             "fullName": "John Doe",
             "address1": "1605 Liberty Avenue",

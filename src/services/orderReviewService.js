@@ -1,7 +1,9 @@
 import orderData from '@data/orders';
 import deliveryMethodsData from '@data/deliveryMethods';
+import couponData from '@data/coupons';
 import Order from '@structures/order/order';
 import DeliveryMethod from '@structures/deliveryMethod';
+import Coupon from '@structures/coupon';
 
 /**
  * Get order from orders.json by order ID
@@ -28,4 +30,18 @@ export function getDeliveryOptions() {
     });
 
     return deliveryMethods;
+}
+
+/**
+ * Returns an array of coupons from coupons.json
+ * @return {Coupon[]}
+ */
+export function getCoupons() {
+    const coupons = [];
+
+    couponData.forEach(couponDatum => {
+        coupons.push(new Coupon(couponDatum));
+    });
+
+    return coupons;
 }

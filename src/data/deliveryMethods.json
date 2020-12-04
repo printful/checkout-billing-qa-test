@@ -1,8 +1,18 @@
 [
     {
+        "id": "pickup",
+        "name": "Self-pickup",
+        "price": 0
+    },
+    {
         "id": "standard",
         "name": "Standard",
         "price": 8.25
+    },
+    {
+        "id": "premium",
+        "name": "Premium",
+        "price": 12.35
     },
     {
         "id": "express",

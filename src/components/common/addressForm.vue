@@ -1,27 +1,35 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div class="lg:pr-8 flex flex-col space-y-4">
-            <div class="flex flex-col items-stretch space-y-1">
-                <label for="fullName">Full name</label>
-                <input
-                    type="text"
-                    name="fullName"
-                    id="fullName"
-                    v-model="address.fullName"
-                    class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
-                />
-            </div>
+            <ValidationProvider v-slot="{ errors }" rules="required" name="full name">
+                <div class="flex flex-col items-stretch space-y-1">
+                    <label for="fullName">Full name*</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        id="fullName"
+                        v-model="address.fullName"
+                        class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
+                        :class="{ 'border-red-700': errors.length }"
+                    />
+                    <span class="text-red-700 text-sm">{{ errors[0] }}</span>
+                </div>
+            </ValidationProvider>
 
-            <div class="flex flex-col items-stretch space-y-1">
-                <label for="address1">Address line 1</label>
-                <input
-                    type="text"
-                    name="address1"
-                    id="address1"
-                    v-model="address.address1"
-                    class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
-                />
-            </div>
+            <ValidationProvider v-slot="{ errors }" rules="required" name="address 1">
+                <div class="flex flex-col items-stretch space-y-1">
+                    <label for="address1">Address line 1*</label>
+                    <input
+                        type="text"
+                        name="address1"
+                        id="address1"
+                        v-model="address.address1"
+                        class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
+                        :class="{ 'border-red-700': errors.length }"
+                    />
+                    <span class="text-red-700 text-sm">{{ errors[0] }}</span>
+                </div>
+            </ValidationProvider>
 
             <div class="flex flex-col items-stretch space-y-1">
                 <label for="address2">Address line 2</label>
@@ -34,16 +42,20 @@
                 />
             </div>
 
-            <div class="flex flex-col items-stretch space-y-1">
-                <label for="country">Country</label>
-                <input
-                    type="text"
-                    name="country"
-                    id="country"
-                    v-model="address.country"
-                    class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
-                />
-            </div>
+            <ValidationProvider v-slot="{ errors }" rules="required">
+                <div class="flex flex-col items-stretch space-y-1">
+                    <label for="country">Country*</label>
+                    <input
+                        type="text"
+                        name="country"
+                        id="country"
+                        v-model="address.country"
+                        class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
+                        :class="{ 'border-red-700': errors.length }"
+                    />
+                    <span class="text-red-700 text-sm">{{ errors[0] }}</span>
+                </div>
+            </ValidationProvider>
 
             <div class="flex flex-col items-stretch space-y-1">
                 <label for="state">State</label>
@@ -59,16 +71,20 @@
 
         <div class="lg:pr-8 flex flex-col space-y-4">
             <div class="grid grid-cols-2 gap-x-4">
-                <div class="flex flex-col space-y-1">
-                    <label for="city">City</label>
-                    <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        v-model="address.city"
-                        class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
-                    />
-                </div>
+                <ValidationProvider v-slot="{ errors }" rules="required">
+                    <div class="flex flex-col space-y-1">
+                        <label for="city">City*</label>
+                        <input
+                            type="text"
+                            name="city"
+                            id="city"
+                            v-model="address.city"
+                            class="h-10 border rounded-md border-gray-300 hover:shadow p-2"
+                            :class="{ 'border-red-700': errors.length }"
+                        />
+                        <span class="text-red-700 text-sm">{{ errors[0] }}</span>
+                    </div>
+                </ValidationProvider>
 
                 <div class="flex flex-col space-y-1">
                     <label for="zip">ZIP</label>
@@ -98,9 +114,14 @@
 
 <script>
 import Address from '@structures/address';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
     name: 'AddressForm',
+
+    components: {
+        ValidationProvider,
+    },
 
     data() {
         return {
