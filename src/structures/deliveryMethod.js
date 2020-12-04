@@ -11,9 +11,13 @@ export default class DeliveryMethod {
     /** @type {number} */
     price = 0;
 
+    /** @type {boolean} */
+    showIncorrectPrice = false;
+
     constructor(params = {}) {
         this.id = params.id ?? DELIVERY_METHOD_STANDARD;
         this.name = params.name ?? '';
         this.price = params.price ?? 0;
+        this.showIncorrectPrice = params.showIncorrectPrice ?? false;
     }
 }

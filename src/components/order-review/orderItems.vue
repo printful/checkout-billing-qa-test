@@ -21,14 +21,17 @@
                     </div>
                 </td>
                 <td class="text-center border-t">{{ item.quantity }}</td>
-                <td class="text-center border-t font-semibold">{{ getFormattedItemPrice(item.price) }}</td>
+                <td class="text-center border-t font-semibold">
+                    {{ getFormattedItemPrice(item.price, item.showIncorrectCurrencySymbol) }}
+                </td>
             </tr>
         </tbody>
     </table>
 </template>
 
 <script>
-import { CURRENCY_USD, getCurrencySymbol } from '@helpers/currency';
+import { CURRENCY_USD, CURRENCY_EUR, getCurrencySymbol } from '@helpers/currency';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'OrderItems',
@@ -48,10 +51,18 @@ export default {
 
     methods: {
         /**
+         * @param {number} price
+         * @param {boolean} showIncorrectCurrencySymbol
          * @return {string}
          */
-        getFormattedItemPrice(price) {
-            return getCurrencySymbol(this.currency) + price;
+        getFormattedItemPrice(price, showIncorrectCurrencySymbol = false) {
+            let currency = this.currency;
+
+            if (isTestMode && showIncorrectCurrencySymbol) {
+                currency = CURRENCY_EUR;
+            }
+
+            return getCurrencySymbol(currency) + price;
         },
 
         /**

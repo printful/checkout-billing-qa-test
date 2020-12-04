@@ -27,7 +27,7 @@
                         <div class="font-bold mb-2">Shipping from</div>
                         <div class="flex content-center">
                             <div class="mr-1">
-                                <country-flag :country="order.fulfillmentLocation.id" size="small" class="my-auto" />
+                                <country-flag :country="fulfillmentLocationFlag" size="small" class="my-auto" />
                             </div>
                             <div>
                                 <span>{{ order.fulfillmentLocation.name }}</span>
@@ -58,7 +58,10 @@
                         <label class="inline-flex items-center mt-3 cursor-pointer">
                             <input type="checkbox" v-model="isTosChecked" class="form-checkbox h-4 w-4 text-blue-600" />
                             <div class="ml-2 text-gray-600">
-                                I agree to <span class="italic">Terms of Service</span>.
+                                <span v-if="!isTestMode">
+                                    I agree to <span class="italic">Terms of Service</span>.
+                                </span>
+                                <span v-else> I agree to <span class="italic">Terms of Srvice</span>. </span>
                             </div>
                         </label>
                     </div>
@@ -87,7 +90,8 @@ import AddressForm from '@components/common/addressForm';
 import CountryFlag from 'vue-country-flag';
 import CheckoutSteps from '@components/order-review/checkoutSteps';
 import DiscountCodeInput from '@components/order-review/discountCodeInput.vue';
-import OrderSelector from '@components/order-review/testHelpers/orderSelector.vue';
+import OrderSelector from '@components/order-review/test-helpers/orderSelector.vue';
+import { isTestMode } from '@config/testConfig';
 
 export default {
     name: 'OrderReview',
@@ -112,6 +116,7 @@ export default {
             orderId: 1,
             order: null,
             submitError: '',
+            isTestMode,
         };
     },
 
@@ -127,7 +132,14 @@ export default {
          * @return {string}
          */
         discountTooltip() {
-            return 'Codes for testing: <br /> TESTCODE5 - $5 <br /> TESTCODE10 - $10';
+            return 'Codes for QA test: <br /> TESTCODE5 - $5 <br /> TESTCODE10 - $10';
+        },
+
+        /**
+         * @return {string}
+         */
+        fulfillmentLocationFlag() {
+            return isTestMode ? 'US' : this.order.fulfillmentLocation.id;
         },
     },
 
