@@ -1,4 +1,4 @@
 module.exports = {
     theme: {},
-    purge: ['./src/views/*.vue', './src/components/**/*.vue'],
+    purge: ['./src/*.vue', './src/views/*.vue', './src/components/**/*.vue'],
 };
