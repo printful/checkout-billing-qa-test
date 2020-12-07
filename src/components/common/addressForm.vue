@@ -160,7 +160,14 @@ export default {
                             isAddressValid: this.isAddressValid,
                             newAddress,
                         });
+
+                        return;
                     }
+
+                    this.$emit('on-address-change', {
+                        isAddressValid: this.isAddressValid,
+                        newAddress: null,
+                    });
                 });
             },
         },

@@ -22,7 +22,8 @@
                     Apply
                 </button>
             </div>
-            <span class="text-red-700 text-sm">{{ errors[0] }}</span>
+            <span v-if="!isTestMode" class="text-red-700 text-sm">{{ errors[0] }}</span>
+            <span v-else v-html="errors[0]" class="text-red-700 text-sm"></span>
         </ValidationProvider>
     </div>
 </template>
@@ -51,6 +52,7 @@ export default {
             isInputDisabled: false,
             coupons: [],
             discountCode: '',
+            isTestMode,
         };
     },
 
@@ -95,13 +97,13 @@ export default {
             });
 
             if (!coupon.length) {
-                this.setError('Code is not valid.');
+                this.setError(`Code ${discountCode} is not valid.`);
 
                 return 0;
             }
 
             if (isTestMode && coupon[0].isInvalidInTestMode) {
-                this.setError('Code is not valid.');
+                this.setError(`Code ${discountCode} is not valid.`);
 
                 return 0;
             }

@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <span class="text-lg text-gray-500 mr-2">Test order:</span>
+        <span class="text-lg text-gray-500 mr-2" v-tooltip="'Switch between test orders'">Test order:</span>
         <button
             v-for="orderId in orders"
             :key="orderId"
