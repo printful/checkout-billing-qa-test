@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="flex text-sm font-semibold content-center text-center">
+            <div class="flex text-sm font-normal content-center text-center">
                 <div class="w-1/6">
                     Products
                 </div>

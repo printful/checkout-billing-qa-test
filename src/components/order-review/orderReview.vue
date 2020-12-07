@@ -132,7 +132,10 @@ export default {
          * @return {string}
          */
         discountTooltip() {
-            return 'Codes for QA test: <br /> TESTCODE5 - $5 <br /> TESTCODE10 - $10';
+            return {
+                content: 'Codes for QA test: <br /> TESTCODE5 - $5 <br /> TESTCODE10 - $10',
+                delay: { hide: 500 },
+            };
         },
 
         /**
