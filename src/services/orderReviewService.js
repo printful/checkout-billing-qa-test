@@ -15,6 +15,8 @@ export function getOrderById(orderId) {
         return null;
     }
 
+    console.log('Super secret stuff that should not be outputted to console!');
+
     return new Order(orderRaw[0]);
 }
 
