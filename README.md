@@ -2,6 +2,12 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/33bcf9f0-9cd7-43f5-9be9-6c96d1f86702/deploy-status)](https://app.netlify.com/sites/billing-qa-test/deploys)
 
+## Dev environment requirements
+
+|      | Version                                 |
+| ---- | --------------------------------------- |
+| Node | **>=12.13.0** (because of Tailwind CSS) |
+
 ## Project setup
 
 ```
