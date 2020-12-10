@@ -15,7 +15,8 @@ export function getOrderById(orderId) {
         return null;
     }
 
-    console.log('Super secret stuff that should not be outputted to console!');
+    // eslint-disable-next-line
+    console.log('Super secret stuff that should not be outputted to the console!');
 
     return new Order(orderRaw[0]);
 }
