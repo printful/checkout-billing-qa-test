@@ -49,8 +49,8 @@
         "id": 2,
         "taxPercentage": 0.22,
         "fulfillmentLocation": {
-            "id": "LV",
-            "name": "Latvia"
+            "id": "PL",
+            "name": "Poland"
         },
         "shippingAddress": {
             "fullName": "John Doe",
