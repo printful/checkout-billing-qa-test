@@ -75,7 +75,7 @@ export default {
          * @return {string}
          */
         getGrandTotal() {
-            const grandTotal = isTestMode ? parseFloat(this.order.grandTotal) + 0.45 : this.order.grandTotal;
+            const grandTotal = isTestMode ? parseFloat(this.order.grandTotal) + 1.00 : this.order.grandTotal;
 
             return this.getAmount(grandTotal, this.order);
         },
